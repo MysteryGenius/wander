@@ -2,7 +2,7 @@ from flask import Flask
 from flask import jsonify
 from flask import request
 from datetime import datetime
-
+from flask_cors import CORS
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -14,6 +14,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/ping-test')
 def pingTest():
